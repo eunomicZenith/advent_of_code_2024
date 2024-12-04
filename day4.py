@@ -2,9 +2,9 @@ import regex as re
 
 with open(r'inputs\day4.txt') as input_file:
     raw_input = input_file.readlines()
-input = [line.rstrip('\n') for line in raw_input]
+puz_input = [line.rstrip('\n') for line in raw_input]
 
-# flips the input across its diagonal axis ("transposes", apparently)
+# flips the puz_input across its diagonal axis ("transposes", apparently)
 def zip_flip(wordsearch):
     return ["".join(n) for n in zip(*wordsearch)]
 
@@ -29,10 +29,10 @@ def reverse(wordsearch):
 
 # let's count all the xmas/samx in horizontal, vertical, upward diagonal and downward diagonal
 part_1_count = sum(
-    [count_xmas(input),
-    count_xmas(zip_flip(input)),
-    count_xmas(skew_array(input)),
-    count_xmas(skew_array(reverse(input)))]
+    [count_xmas(puz_input),
+    count_xmas(zip_flip(puz_input)),
+    count_xmas(skew_array(puz_input)),
+    count_xmas(skew_array(reverse(puz_input)))]
 )
 
 print(f"Number of XMAS: {part_1_count}")
@@ -59,4 +59,4 @@ def count_cross_mas(wordsearch):
                 count +=1
     return count
 
-print(f"Number of X-MAS: {count_cross_mas(input)}")
+print(f"Number of X-MAS: {count_cross_mas(puz_input)}")
